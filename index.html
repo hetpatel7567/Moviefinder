@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>movie/series Finder</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Bootstrap CSS -->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+
+<body>
+
+    <!-- Bootstrap Toast for Note -->
+
+    <div class="alert alert-info" role="alert" id="alert">
+
+        Press the search button everytime to regenerate the URL
+
+      </div>
+
+    
+
+
+
+    <div class="container">
+
+        <div class="container">
+
+            <div class="section movie-section">
+
+                <h1>Movie Finder</h1>
+
+                <label for="movieName">Enter Movie Name:</label>
+
+                <input type="text" id="movieName" oninput="getMovieSuggestions()" />
+
+                <ul id="movieSuggestions"></ul>
+
+                <button onclick="searchMovie()">Search</button>
+
+                <p id="movieResult"></p>
+
+                <button id="movieCopyButton" onclick="copyToClipboard('movie')">Copy URL</button>
+
+            </div>
+
+        
+
+            <div class="section series-section">
+
+                <h1>Series Finder</h1>
+
+                <label for="seriesName">Enter Series Name:</label>
+
+                <input type="text" id="seriesName" oninput="getSeriesSuggestions()" />
+
+                <ul id="seriesSuggestions"></ul>
+
+                <button onclick="searchSeries()">Search</button>
+
+                <p id="seriesResult"></p>
+
+                <button id="seriesCopyButton" onclick="copyToClipboard('series')">Copy URL</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Bootstrap JS and Popper.js -->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="main.js"></script>
+
+       <!-- Script to initialize the toast -->
+
+     
+
+</body>
+
+</html>
+

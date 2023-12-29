@@ -1,0 +1,209 @@
+
+
+  @import url('https://fonts.googleapis.com/css2?family=Shrikhand&display=swap');
+
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Gujarati:wght@600&display=swap');
+
+  /* Add any custom styles here */
+
+ body {
+
+     font-family: 'Arial', sans-serif;
+
+     margin: 0;
+
+ }
+
+ 
+
+ .container {
+
+     display: flex;
+
+     flex-direction: column;
+
+     align-items: center;
+
+ }
+
+ 
+
+ .section {
+
+     margin: 20px;
+
+     padding: 20px;
+
+     box-sizing: border-box;
+
+     width: 100%;
+
+     max-width: 600px;
+
+ }
+
+ 
+
+ .movie-section {
+
+     border-bottom: 8px solid #333;
+
+     padding-bottom: 20px;
+
+ }
+
+ 
+
+ h1 {
+
+     color: #333;
+
+ }
+
+ 
+
+ label {
+
+     font-weight: bold;
+
+     margin-right: 10px;
+
+ }
+
+ 
+
+ input {
+
+     padding: 8px;
+
+     margin-bottom: 10px;
+
+     width: calc(100% - 16px);
+
+ }
+
+ 
+
+ button {
+
+     padding: 10px;
+
+     background-color: #007BFF;
+
+     color: #fff;
+
+     cursor: pointer;
+
+     border: none;
+
+     margin-bottom: 10px;
+
+     width: 100%;
+
+ }
+
+ 
+
+ ul {
+
+     list-style-type: none;
+
+     padding: 0;
+
+     margin: 0;
+
+     max-width: 100%;
+
+ }
+
+ 
+
+ li {
+
+     cursor: pointer;
+
+     margin-bottom: 5px;
+
+ }
+
+ 
+
+ p {
+
+     margin-top: 20px;
+
+ }
+
+ 
+
+ #movieCopyButton, #seriesCopyButton {
+
+     padding: 10px;
+
+     background-color: #28a745;
+
+     color: #fff;
+
+     cursor: pointer;
+
+     border: none;
+
+     margin-top: 10px;
+
+     width: 100%;
+
+ }
+
+ 
+
+ a {
+
+     color: #007BFF;
+
+     text-decoration: none;
+
+ }
+
+ 
+
+ a:hover {
+
+     text-decoration: underline;
+
+ }
+
+ 
+
+ 
+
+ #alert {
+
+      /* Yellow color for warning */
+
+     color: #ff043a; /* Dark yellow color for text */
+
+     text-align: center;
+
+      font-size: larger;
+
+    
+
+ display: flex;
+
+     justify-content: center;
+
+     font-family: 'Shrikhand', serif;
+
+ 
+
+ }
+
+  
+
+ 
+
+ 
+
+ 
+
+ 
