@@ -197,6 +197,24 @@
  
 
  }
+ body {
+    font-family: Arial, sans-serif;
+}
+
+.search-container {
+    text-align: center;
+    margin: 20px;
+}
+
+input[type=text] {
+    padding: 10px;
+    width: 300px;
+}
+
+button {
+    padding: 10px 20px;
+    cursor: pointer;
+}
 
   
 

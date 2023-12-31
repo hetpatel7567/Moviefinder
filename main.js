@@ -88,6 +88,7 @@ function getMovieSuggestions() {
 }
 
 
+
 function searchMovie() {
     const movieName = document.getElementById('movieName').value;
     const apiKey = '69a6237ce6938d2fb74092f8ff3a8f16'; // Replace with your TMDb API key
@@ -102,45 +103,58 @@ function searchMovie() {
             if (data.results && data.results.length > 0) {
                 const movieTmdbId = data.results[0].id;
 
-                // Construct the URL for embedding the movie
-                const movieUrl = `https://vidsrc.xyz/embed/movie/${movieTmdbId}`;
+                // Construct the URL for embedding the first movie
+                const firstMovieUrl = `https://vidsrc.xyz/embed/movie/${movieTmdbId}`;
+                // Construct the URL for embedding the second movie
+                const secondMovieUrl = `https://vidsrc.to/embed/movie/${movieTmdbId}`;
 
-                //Create an iframe element
-                const iframe = document.createElement('iframe');
-                iframe.src = movieUrl; 
-                iframe.allowfullscreen = true;
-                // iframe.width = '800';
-                // iframe.height = '600';
-                
+                // Create the first iframe element
+                const firstIframe = document.createElement('iframe');
+                firstIframe.src = firstMovieUrl; 
+                firstIframe.allowfullscreen = true;
+
+                // Create the second iframe element
+                const secondIframe = document.createElement('iframe');
+                secondIframe.src = secondMovieUrl; 
+                secondIframe.allowfullscreen = true;
 
                 // Clear previous content
                 movieResultElement.innerHTML = '';
 
-                // Display the generated URL as a clickable link
-                const linkElement = document.createElement('a');
-                linkElement.href = movieUrl;
-                linkElement.target = '_blank';
-                linkElement.textContent = "Generated URL:" + movieUrl;
+                // Display the generated URLs as clickable links
+                const firstLinkElement = document.createElement('a');
+                firstLinkElement.href = firstMovieUrl;
+                firstLinkElement.target = '_blank';
+                firstLinkElement.textContent = "Generated URL 1: " + firstMovieUrl;
 
-                // Append the link and iframe to the result element
-                movieResultElement.appendChild(linkElement);
-                movieResultElement.appendChild(iframe);
+                const secondLinkElement = document.createElement('a');
+                secondLinkElement.href = secondMovieUrl;
+                secondLinkElement.target = '_blank';
+                secondLinkElement.textContent = "Generated URL 2: " + secondMovieUrl;
 
-                // Enable the copy button for the movie
+                // Append the links and iframes to the result element
+                movieResultElement.appendChild(firstLinkElement);
+                movieResultElement.appendChild(firstIframe);
+                movieResultElement.appendChild(document.createElement('br')); // Add a line break
+                movieResultElement.appendChild(secondLinkElement);
+                movieResultElement.appendChild(secondIframe);
+
+                // Enable the copy button for the movies
                 movieCopyButton.disabled = false;
 
-                // Store the URL for the movie in a global variable for copying
-                window.generatedMovieUrl = movieUrl;
+                // Store the URLs for the movies in global variables for copying
+                window.generatedFirstMovieUrl = firstMovieUrl;
+                window.generatedSecondMovieUrl = secondMovieUrl;
             } else {
                 movieResultElement.innerHTML = 'Movie not found';
-                // Disable the copy button for the movie if no movie is found
+                // Disable the copy button for the movies if no movie is found
                 movieCopyButton.disabled = true;
             }
         })
         .catch(error => {
             console.error('Error fetching movie data:', error);
             document.getElementById('movieResult').innerHTML = 'Error fetching movie data';
-            // Disable the copy button for the movie in case of an error
+            // Disable the copy button for the movies in case of an error
             document.getElementById('movieCopyButton').disabled = true;
         });
 }
@@ -262,7 +276,6 @@ function getSeriesSuggestions() {
 
 
 
-
 function searchSeries() {
     const seriesName = document.getElementById('seriesName').value;
     const apiKey = '69a6237ce6938d2fb74092f8ff3a8f16'; // Replace with your TMDb API key
@@ -277,37 +290,48 @@ function searchSeries() {
             if (data.results && data.results.length > 0) {
                 const seriesTmdbId = data.results[0].id;
 
-                // Construct the URL for embedding the series
-                const seriesUrl = `https://vidsrc.xyz/embed/tv/${seriesTmdbId}`;
+                // Construct the URL for embedding the first series
+                const firstSeriesUrl = `https://vidsrc.xyz/embed/tv/${seriesTmdbId}`;
+                // Construct the URL for embedding the second series
+                const secondSeriesUrl = `https://vidsrc.to/embed/tv/${seriesTmdbId}`;
 
-                // Create an iframe element
-                const iframe = document.createElement('iframe');
-                iframe.src = seriesUrl;
-                // iframe.id = "framez";
-                // iframe.name = "framez";
-                iframe.allowfullscreen = true;
-                // iframe.width = '800';
-                // iframe.height = '600';
-                // seriesResultElement.innerHTML = `<iframe src="${seriesUrl}"></iframe>`;
+                // Create the first iframe element
+                const firstIframe = document.createElement('iframe');
+                firstIframe.src = firstSeriesUrl;
+                firstIframe.allowfullscreen = true;
+
+                // Create the second iframe element
+                const secondIframe = document.createElement('iframe');
+                secondIframe.src = secondSeriesUrl;
+                secondIframe.allowfullscreen = true;
 
                 // Clear previous content
                 seriesResultElement.innerHTML = '';
 
-                // Display the generated URL as a clickable link
-                const linkElement = document.createElement('a');
-                linkElement.href = seriesUrl;
-                linkElement.target = '_blank';
-                linkElement.textContent = 'Generated URL: ' + seriesUrl;
+                // Display the generated URLs as clickable links
+                const firstLinkElement = document.createElement('a');
+                firstLinkElement.href = firstSeriesUrl;
+                firstLinkElement.target = '_blank';
+                firstLinkElement.textContent = 'Generated URL 1: ' + firstSeriesUrl;
 
-                // Append the link and iframe to the result element
-                seriesResultElement.appendChild(linkElement);
-                seriesResultElement.appendChild(iframe);
+                const secondLinkElement = document.createElement('a');
+                secondLinkElement.href = secondSeriesUrl;
+                secondLinkElement.target = '_blank';
+                secondLinkElement.textContent = 'Generated URL 2: ' + secondSeriesUrl;
+
+                // Append the links and iframes to the result element
+                seriesResultElement.appendChild(firstLinkElement);
+                seriesResultElement.appendChild(firstIframe);
+                seriesResultElement.appendChild(document.createElement('br')); // Add a line break
+                seriesResultElement.appendChild(secondLinkElement);
+                seriesResultElement.appendChild(secondIframe);
 
                 // Enable the copy button for the series
                 seriesCopyButton.disabled = false;
 
-                // Store the URL for the series in a global variable for copying
-                window.generatedSeriesUrl = seriesUrl;
+                // Store the URLs for the series in global variables for copying
+                window.generatedFirstSeriesUrl = firstSeriesUrl;
+                window.generatedSecondSeriesUrl = secondSeriesUrl;
             } else {
                 seriesResultElement.innerHTML = 'Series not found';
                 // Disable the copy button for the series if no series is found
@@ -321,6 +345,10 @@ function searchSeries() {
             document.getElementById('seriesCopyButton').disabled = true;
         });
 }
+
+
+
+
 
 
 
@@ -361,6 +389,3 @@ function clearSeriesSuggestions() {
     document.getElementById('seriesSuggestions').innerHTML = '';
 
 }
-
-
-
