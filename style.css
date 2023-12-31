@@ -182,7 +182,7 @@
 
      color: #ff043a; /* Dark yellow color for text */
 
-     text-align: center;
+      text-align: center;
 
       font-size: larger;
 
@@ -199,9 +199,9 @@
  }
  body {
     font-family: Arial, sans-serif;
-}
+} 
 
-.search-container {
+ .search-container {
     text-align: center;
     margin: 20px;
 }
@@ -214,14 +214,5 @@ input[type=text] {
 button {
     padding: 10px 20px;
     cursor: pointer;
-}
+} 
 
-  
-
- 
-
- 
-
- 
-
- 
