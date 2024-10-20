@@ -39,7 +39,6 @@ function getMovieSuggestions() {
 
 
 
-    // Make a request to TMDb API for movie suggestions
 
     fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${encodeURIComponent(movieName)}`)
 
@@ -91,9 +90,7 @@ function getMovieSuggestions() {
 
 function searchMovie() {
     const movieName = document.getElementById('movieName').value;
-    const apiKey = '69a6237ce6938d2fb74092f8ff3a8f16'; // Replace with your TMDb API key
-
-    // Make a request to TMDb API for movie details
+    const apiKey = '69a6237ce6938d2fb74092f8ff3a8f16'; 
     fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${encodeURIComponent(movieName)}`)
         .then(response => response.json())
         .then(data => {
@@ -103,25 +100,19 @@ function searchMovie() {
             if (data.results && data.results.length > 0) {
                 const movieTmdbId = data.results[0].id;
 
-                // Construct the URL for embedding the first movie
                 const firstMovieUrl = `https://vidsrc.xyz/embed/movie/${movieTmdbId}`;
-                // Construct the URL for embedding the second movie
                 const secondMovieUrl = `https://vidsrc.to/embed/movie/${movieTmdbId}`;
 
-                // Create the first iframe element
                 const firstIframe = document.createElement('iframe');
                 firstIframe.src = firstMovieUrl; 
                 firstIframe.allowfullscreen = true;
 
-                // Create the second iframe element
                 const secondIframe = document.createElement('iframe');
                 secondIframe.src = secondMovieUrl; 
                 secondIframe.allowfullscreen = true;
 
-                // Clear previous content
                 movieResultElement.innerHTML = '';
 
-                // Display the generated URLs as clickable links
                 const firstLinkElement = document.createElement('a');
                 firstLinkElement.href = firstMovieUrl;
                 firstLinkElement.target = '_blank';
@@ -132,29 +123,24 @@ function searchMovie() {
                 secondLinkElement.target = '_blank';
                 secondLinkElement.textContent = "Generated URL 2: " + secondMovieUrl;
 
-                // Append the links and iframes to the result element
                 movieResultElement.appendChild(firstLinkElement);
                 movieResultElement.appendChild(firstIframe);
                 movieResultElement.appendChild(document.createElement('br')); // Add a line break
                 movieResultElement.appendChild(secondLinkElement);
                 movieResultElement.appendChild(secondIframe);
 
-                // Enable the copy button for the movies
                 movieCopyButton.disabled = false;
 
-                // Store the URLs for the movies in global variables for copying
                 window.generatedFirstMovieUrl = firstMovieUrl;
                 window.generatedSecondMovieUrl = secondMovieUrl;
             } else {
                 movieResultElement.innerHTML = 'Movie not found';
-                // Disable the copy button for the movies if no movie is found
                 movieCopyButton.disabled = true;
             }
         })
         .catch(error => {
             console.error('Error fetching movie data:', error);
             document.getElementById('movieResult').innerHTML = 'Error fetching movie data';
-            // Disable the copy button for the movies in case of an error
             document.getElementById('movieCopyButton').disabled = true;
         });
 }
@@ -171,24 +157,19 @@ function copyMovieToClipboard() {
         return;
     }
 
-    // Create a temporary textarea element
     const textarea = document.createElement('textarea');
     textarea.value = generatedMovieUrl;
 
-    // Append it to the body
     document.body.appendChild(textarea);
 
-    // Select the text
     textarea.select();
 
     try {
-        // Use the Clipboard API to copy the text to the clipboard
         document.execCommand('copy');
         console.log('URL copied to clipboard:', generatedMovieUrl);
     } catch (error) {
         console.error('Error copying to clipboard:', error);
     } finally {
-        // Remove the temporary textarea
         document.body.removeChild(textarea);
     }
 }
@@ -204,7 +185,6 @@ function clearMovieSuggestions() {
 
 
 
-// Series Section
 
 function getSeriesSuggestions() {
 
@@ -224,7 +204,6 @@ function getSeriesSuggestions() {
 
 
 
-    // Make a request to TMDb API for series suggestions
 
     fetch(`https://api.themoviedb.org/3/search/tv?api_key=${apiKey}&query=${encodeURIComponent(seriesName)}`)
 
@@ -280,7 +259,6 @@ function searchSeries() {
     const seriesName = document.getElementById('seriesName').value;
     const apiKey = '69a6237ce6938d2fb74092f8ff3a8f16'; // Replace with your TMDb API key
 
-    // Make a request to TMDb API for series details
     fetch(`https://api.themoviedb.org/3/search/tv?api_key=${apiKey}&query=${encodeURIComponent(seriesName)}`)
         .then(response => response.json())
         .then(data => {
@@ -290,25 +268,19 @@ function searchSeries() {
             if (data.results && data.results.length > 0) {
                 const seriesTmdbId = data.results[0].id;
 
-                // Construct the URL for embedding the first series
                 const firstSeriesUrl = `https://vidsrc.xyz/embed/tv/${seriesTmdbId}`;
-                // Construct the URL for embedding the second series
                 const secondSeriesUrl = `https://vidsrc.to/embed/tv/${seriesTmdbId}`;
 
-                // Create the first iframe element
                 const firstIframe = document.createElement('iframe');
                 firstIframe.src = firstSeriesUrl;
                 firstIframe.allowfullscreen = true;
 
-                // Create the second iframe element
                 const secondIframe = document.createElement('iframe');
                 secondIframe.src = secondSeriesUrl;
                 secondIframe.allowfullscreen = true;
 
-                // Clear previous content
                 seriesResultElement.innerHTML = '';
 
-                // Display the generated URLs as clickable links
                 const firstLinkElement = document.createElement('a');
                 firstLinkElement.href = firstSeriesUrl;
                 firstLinkElement.target = '_blank';
@@ -319,22 +291,21 @@ function searchSeries() {
                 secondLinkElement.target = '_blank';
                 secondLinkElement.textContent = 'Generated URL 2: ' + secondSeriesUrl;
 
-                // Append the links and iframes to the result element
+               
                 seriesResultElement.appendChild(firstLinkElement);
                 seriesResultElement.appendChild(firstIframe);
                 seriesResultElement.appendChild(document.createElement('br')); // Add a line break
                 seriesResultElement.appendChild(secondLinkElement);
                 seriesResultElement.appendChild(secondIframe);
 
-                // Enable the copy button for the series
+                
                 seriesCopyButton.disabled = false;
 
-                // Store the URLs for the series in global variables for copying
+             
                 window.generatedFirstSeriesUrl = firstSeriesUrl;
                 window.generatedSecondSeriesUrl = secondSeriesUrl;
             } else {
                 seriesResultElement.innerHTML = 'Series not found';
-                // Disable the copy button for the series if no series is found
                 seriesCopyButton.disabled = true;
             }
         })
@@ -388,4 +359,33 @@ function clearSeriesSuggestions() {
 
     document.getElementById('seriesSuggestions').innerHTML = '';
 
+}
+
+
+const API_KEY = '69a6237ce6938d2fb74092f8ff3a8f16';
+
+async function searchMovie() {
+    const movieName = document.getElementById('movieName').value;
+    const movieIdInput = document.getElementById('movieId');
+    const resultDisplay = document.getElementById('resultDisplay');
+
+    const searchUrl = `https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(movieName)}&api_key=${API_KEY}`;
+
+    try {
+        const response = await fetch(searchUrl);
+        const searchResults = await response.json();
+
+        if (searchResults.results && searchResults.results.length > 0) {
+            const firstMovie = searchResults.results[0];
+            const movieId = firstMovie.id;
+            const movieTitle = firstMovie.title;
+
+            movieIdInput.value = movieId;
+            resultDisplay.textContent = `Movie found: ${movieTitle} (ID: ${movieId})`;
+        } else {
+            resultDisplay.textContent = `No results found for '${movieName}'`;
+        }
+    } catch (error) {
+        console.error('Error fetching movie data:', error);
+    }
 }
